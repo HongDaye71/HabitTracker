@@ -5,7 +5,6 @@ import { faSquareMinus } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class Habit extends Component {
-    //Habit: 자체적으로 상태를 갖지 않고, 외부에서 받아온 Prop을 출력하는 컴포넌트
     state = {
         count: 0,
       };
