@@ -5,22 +5,22 @@ import { faSquareMinus } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class Habit extends Component {
+    //Habit: 자체적으로 상태를 갖지 않고, 외부에서 받아온 Prop을 출력하는 컴포넌트
     state = {
-        count:0,
-    };
-
-    handleIncrement = () => {
-        this.setState({count: this.state.count + 1});
-        /*
-        this.state.count++;와 같은 코드는 작동되지 않음
-        -> React에서는 setState함수를 사용해야만 현재의 상태가 변경되어 render를 업데이트 해야 한다는 것을 할 수 있음
-        */
-    }
-
-    handleDecrement = () => {
-        const count = this.state.count - 1;
-        this.setState( {count: count < 0 ? 0 : count} );
-    }
+        count: 0,
+      };
+    
+      handleIncrement = () => {
+        this.props.onIncrement(this.props.habit);
+      };
+    
+      handleDecrement = () => {
+        this.props.onDecrement(this.props.habit);
+      };
+    
+      handleDelete = () => {
+        this.props.onDelete(this.props.habit);
+      };
 
     render() {
         const {name, count} = this.props.habit;
@@ -57,11 +57,3 @@ class Habit extends Component {
 }
 
 export default Habit;
-
-/*
-- Component골격 자동생성: "rcc"입력 후 탭버튼 클릭
-- 클래스명은 항상 대문자로 시작
-- 스크립트 이동 단축키: Ctrl + p
-- [font awesome free ver download]
-    cmd: yarn add @fontawesome/fontawesome-free
-*/
